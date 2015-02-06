@@ -15,11 +15,37 @@
 			var min = now.getMinutes();
 			//秒の取得
 			var sec = now.getSeconds();
-
+			
+			if(hour < 10) hour = "0" + hour;
+			if(min < 10) min = "0" + min
+			if(sec < 10) sec = "0" + sec
+			
 			//時間表示用の要素の取得
 			var timeElement = document.getElementById("time");
 			//時間をセット
 			timeElement.innerHTML = hour + ":" + min + ":" + sec;
+			
+			var year = now.getFullYear();
+			var month = now.getMonth() + 1;
+			var day = now.getDate();
+			
+			if(year < 10) {
+				year = "000" + year;
+			}else if(year < 100){
+				year = "00" + year;
+			}else if(year <1000){
+				year = "0" + year;
+			}
+			
+			if(month < 10) month = "0" + month;
+			if(day < 10) day = "0" + day;
+
+			var weekArray = ["Sun","Mon","Tue","Wed","Fri","Sat"];
+			var week = weekArray[now.getDay()];
+			var dateElement = document.getElementById("date");
+			dateElement.innerHTML = year + "/" + month + "/" + day + " " + week
+
+			setInterval("clock()",1000);
 		}
 		</script>
 		<style>
@@ -34,12 +60,16 @@
 			#time{
 				font-size:42pt;
 			}
+			#date{
+				font-size:20pt;
+			}
 		</style>
 	</head>
 	<body onLoad="clock()">
 		<div id="clock">
 			<img src="IMG_3273.JPG">
-			<div id="time">--:--:--</div>
+			<div id = "date">----/--/-- ---</div>
+			<div id = "time">--:--:--</div>
 		</div>
 		<div id = "link"><a href="index.html">Home</a></div>
 	</body>
