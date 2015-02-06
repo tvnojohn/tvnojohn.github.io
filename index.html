@@ -1,3 +1,30 @@
-hello world
-!
-My name is John.
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="Shift_JIS">
+		<title>johnのgit</title>
+		<script>
+			function showSlider(){
+				var sliderValue = document.getElementById("slider").value;
+				alert("スライダーの値:" + sliderValue);
+			}
+		</script>
+	</head>
+	<body>
+		<div>hello world
+!</div>
+		<div>My name is John.</div>
+		<form>
+			<input type="range" id="slider" value="50" min="0" max="100">
+			<br>
+			<input type="button" value="表示" onClick="showSlider()">
+		</form>
+		<br>
+		<li>
+			<a href="http://kiefer7126.github.io">俺のライバル</a>
+		</li>
+		<li>
+			<a href="http://b1012038.github.io">next one</a>
+		</li>
+	</body>
+</html>
