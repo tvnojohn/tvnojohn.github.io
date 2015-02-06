@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="Shift_JIS">
-		<title>¢ŠEŒv</title>
+		<meta charset="UTF-8">
+		<title>ä¸–ç•Œæ™‚è¨ˆ</title>
 		<script>
-		//Œv‚Ì•\¦
+		//æ™‚è¨ˆã®è¡¨ç¤º
 		function clock(){
-			//Œ»İ‚Ì“ú
+			//ç¾åœ¨ã®æ—¥æ™‚
 			var now = new Data();
 
-			//ŠÔ‚Ìæ“¾
+			//æ™‚é–“ã®å–å¾—
 			var hour = now.getHours();
-			//•ª‚Ìæ“¾
+			//åˆ†ã®å–å¾—
 			var min = now.getMinutes();
-			//•b‚Ìæ“¾
+			//ç§’ã®å–å¾—
 			var sec = now.getSeconds();
 
-			//ŠÔ•\¦—p‚Ì—v‘f‚Ìæ“¾
+			//æ™‚é–“è¡¨ç¤ºç”¨ã®è¦ç´ ã®å–å¾—
 			var timeElement = document.getElementById("time");
-			//ŠÔ‚ğƒZƒbƒg
+			//æ™‚é–“ã‚’ã‚»ãƒƒãƒˆ
 			timeElement.innerHTML = hour + ":" + min + ":" + sec;
 		}
 		</script>
 		<style>
 			#clock{
-				font-family:"Courier New";
-				background-coolor:#CCCCCC;
-				bordar:solid #999999 1px;
-				color:#000000;
-				width:300px;
-				padding:10px;
+				font-family: "Courier New";
+				background-coolor: #CCCCCC;
+				bordar: solid #999999 1px;
+				color: #000000;
+				width: 300px;
+				padding: 10px;
 			}
 			#time{
 				font-size:42pt;
@@ -41,5 +41,6 @@
 			<img src="IMG_3273.JPG">
 			<div id="time">--:--:--</div>
 		</div>
+		<div id = "link"><a href="index.html">Home</a></div>
 	</body>
 </html>
