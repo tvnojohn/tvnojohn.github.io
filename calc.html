@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>電卓</title>
+</head>
+<body>
+<h3>計算はまだできない電卓</h3>
+<hr>
+<form name="calc">
+<table border="2">
+<tr>
+<th colspan="3" align="right"><div id="output">0</div></th>
+<th><div id="type"></div></th>
+</tr>
+<tr>
+	<td><input type="button" value="7" onClick="calc_run(7)"></td>
+	<td><input type="button" value="8" onClick="calc_run(8)"></td>
+	<td><input type="button" value="9" onClick="calc_run(9)"></td>
+	<td><input type="button" value"÷" onClick="calc_run('/')"></td>
+</tr>
+<tr>
+	<td><input type="button" value="4" onClick="calc_run(4)"></td>
+	<td><input type="button" value="5" onClick="calc_run(5)"></td>
+	<td><input type="button" value="6" onClick="calc_run(6)"></td>
+	<td><input type="button" value="×" onClick="calc_run('*')"></td>
+</tr>
+<tr>
+	<td><input type="button" value="1" onClick="calc_run(1)"></td>
+	<td><input type="button" value="2" onClick="calc_run(2)"></td>
+	<td><input type="button" value="3" onClick="calc_run(3)"></td>
+	<td><input type="button" value="-" onClick="calc_run('-')"></td>
+</tr>
+<tr>
+	<td><input type="button" value="0" onClick="calc_run(0)"></td>
+	<td><input type="button" value="." onClick="calc_period()"></td>
+	<td><input type="button" value="＝" onClick="calc_equal()"></td>
+	<td><input type="button" value="+" onClick="calc_run('+')"></td>
+</tr>
+</table>
+</form>
+<script language="javascript">
+	ans = 0;
+	num = "0";
+	key = "";
+	kigou = "";
+
+	function calc_run(btn){
+		if(!isNaN(btn)){
+			if(!isNaN(key)){
+				if(num == "0"){
+					num = ""+btn;
+				}else{
+					num += ""+btn;
+				}
+			}else{
+				num = ""+btn;
+			}
+			document.getElementById("output").innerHTML = num;
+		}else{
+			if(!isNAN(key)){
+				
+			}
+			kigou = btn;
+			document.getElementById("type").innerHTML = kigou;
+		}
+		key = btn;
+	}
+	
+	function calc_period(){
+		if(num.indexOf(".") < 0)	num += ".";
+		document.getElementById("output").innerHTML = num;
+	}
+	
+	function calc_equal(){
+		if(key == "="){
+			ans = 0;
+			key = "";
+		}else{
+			ans = eval(ans + kigou + num);
+			key = "=";
+		}
+		num = "0"
+		kigou = key
+		document.getElementById("output").innerHTML = ans;
+		document.getElementById("type").innerHTML =key;
+	}
+</script>
+</body>
+</html>	
