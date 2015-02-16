@@ -4,10 +4,9 @@ function typeCheck(){
 	if (event.keyCode >= 48 && event.keyCode <= 57 && !event.shiftKey){
    		calc_run(event.keyCode-48);
     }
-    console.log(event.keyCode);
     switch(event.keyCode){
     	case 67:
-    		reset();
+    		calc_reset();
     		break;
     	case 187:
     		calc_run('+');

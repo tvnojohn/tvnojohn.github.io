@@ -5,7 +5,7 @@
 	<title>電卓</title>
 </head>
 <body>
-<h3>電卓ver1.2</h3>
+<h3>電卓ver1.2.2</h3>
 <hr>
 <form name="calc">
 <table border="2">
@@ -17,8 +17,8 @@
 	<td><input type="button" value="7" onClick="calc_run(7)"></td>
 	<td><input type="button" value="8" onClick="calc_run(8)"></td>
 	<td><input type="button" value="9" onClick="calc_run(9)"></td>
-	<td><input type="button" value="/" onClick="calc_run('/')"></td>
-	<td><input type="button" value="C" onClick="reset()"></td>
+	<td><input type="button" value="÷" onClick="calc_run('/')"></td>
+	<td><input type="button" value="C" onClick="calc_reset()"></td>
 </tr>
 <tr>
 	<td><input type="button" value="4" onClick="calc_run(4)"></td>
@@ -97,8 +97,7 @@
 			document.getElementById("type").innerHTML =key;
 		}
 	}
-	typeCheck();
-	function reset(){
+	function calc_reset(){
 		ans = 0;
 		num = "0";
 		key = "";
@@ -106,8 +105,10 @@
 		document.getElementById("output").innerHTML = ans;
 		document.getElementById("type").innerHTML =key;
 	}
+	typeCheck();
 </script>
-<div>ver1.3:キーボードでの8と*との判定を修正
+<div>ver1.2.2:Cボタンを押した時の処理を修正
+<div>ver1.2.1:キーボードでの8と*との判定を修正
 <div>ver1.2:リセットボタンの追加，キーボード入力に対応</div>
 </body>
 </html>	
