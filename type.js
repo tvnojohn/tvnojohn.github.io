@@ -1,9 +1,10 @@
 document.onkeydown = typeCheck;
 
 function typeCheck(){
-	if (event.keyCode >= 48 && event.keyCode <= 57){
+	if (event.keyCode >= 48 && event.keyCode <= 57 && !event.shiftKey){
    		calc_run(event.keyCode-48);
     }
+    console.log(event.keyCode);
     switch(event.keyCode){
     	case 67:
     		reset();
@@ -15,7 +16,9 @@ function typeCheck(){
     		calc_run('-');
     		break;
     	case 56:
-    		calc_run('*');
+    		if(event.shiftKey){
+    			calc_run('*');
+    		}
     		break;
     	case 191:
     		calc_run('/');
@@ -27,7 +30,7 @@ function typeCheck(){
     		calc_period()
     		break;
     	default:
-    		console.log(event.keyCode);
+    		//console.log(event.keyCode);
     		break;	
     }
 }
