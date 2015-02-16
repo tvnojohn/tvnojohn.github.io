@@ -24,7 +24,7 @@ function typeCheck(){
     		calc_equal();
     		break;
     	case 190:
-    		calc_run('.');
+    		calc_period()
     		break;
     	default:
     		console.log(event.keyCode);
