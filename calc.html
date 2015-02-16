@@ -81,17 +81,19 @@
 	}
 	
 	function calc_equal(){
-		if(key == "="){
-			ans = 0;
-			key = "";
-		}else{
-			ans = eval(ans + kigou + num);
-			key = "=";
+		if(kigou != ""){
+			if(key == "="){
+				ans = 0;
+				key = "";
+			}else{
+				ans = eval(ans + kigou + num);
+				key = "=";
+			}
+			num = "0"
+			kigou = key
+			document.getElementById("output").innerHTML = ans;
+			document.getElementById("type").innerHTML =key;
 		}
-		num = "0"
-		kigou = key
-		document.getElementById("output").innerHTML = ans;
-		document.getElementById("type").innerHTML =key;
 	}
 </script>
 </body>
