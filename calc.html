@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<title>電卓</title>
 </head>
 <body>
-<h3>計算はまだできない電卓</h3>
+<h3>電卓ver1.0</h3>
 <hr>
 <form name="calc">
 <table border="2">
@@ -17,7 +17,7 @@
 	<td><input type="button" value="7" onClick="calc_run(7)"></td>
 	<td><input type="button" value="8" onClick="calc_run(8)"></td>
 	<td><input type="button" value="9" onClick="calc_run(9)"></td>
-	<td><input type="button" value"÷" onClick="calc_run('/')"></td>
+	<td><input type="button" value"/" onClick="calc_run('/')"></td>
 </tr>
 <tr>
 	<td><input type="button" value="4" onClick="calc_run(4)"></td>
@@ -47,6 +47,10 @@
 
 	function calc_run(btn){
 		if(!isNaN(btn)){
+			if(kigou == "="){
+				ans = 0;
+				kigou = "";
+			}
 			if(!isNaN(key)){
 				if(num == "0"){
 					num = ""+btn;
@@ -58,8 +62,11 @@
 			}
 			document.getElementById("output").innerHTML = num;
 		}else{
-			if(!isNAN(key)){
-				
+			if(!isNaN(key)){
+				if(kigou == "")ans = num;
+				else ans = eval(ans + kigou + num);
+				num = "0";
+				document.getElementById("output").innertHTML = ans;
 			}
 			kigou = btn;
 			document.getElementById("type").innerHTML = kigou;
@@ -69,6 +76,7 @@
 	
 	function calc_period(){
 		if(num.indexOf(".") < 0)	num += ".";
+		key = 0;
 		document.getElementById("output").innerHTML = num;
 	}
 	
