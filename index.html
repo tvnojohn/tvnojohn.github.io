@@ -25,33 +25,15 @@
 			<li><a href="http://b1012038.github.io/clock.html">Clock</a></li>
 			<li><a href="http://b1012038.github.io/calc.html">Calc</a></li>
 		</ul>
-		<SCRIPT LANGUAGE="JavaScript">
-<!--
-update = new Date(document.lastModified);
-pudatetime = update.getTime();
-if (pudatetime < 0) {
-  pudatetime += 3155792400000;
-}
-else
-if (navigator.userAgent.indexOf('MSIE') == -1 && navigator.userAgent.indexOf('Firefox') == -1) {
-  pudatetime -= update.getTimezoneOffset() * 60 * 1000;
-}
-update2 = new Date(pudatetime);
-year = update2.getYear();
-month = update2.getMonth() + 1;
-date = update2.getDate();
-hours = update2.getHours();
-minutes = update2.getMinutes();
-seconds = update2.getSeconds();
-if (year < 1000) { year += 1900; }
-document.write('最終更新日：');
-document.write(year,'年');
-document.write(month,'月');
-document.write(date,'日 ');
-document.write(hours,':');
-document.write(minutes,':');
-document.write(seconds);
-//-->
-</SCRIPT>
+<script type="text/javascript"><!--
+   	var modified = new Date(document.lastModified);
+   	var year = modified.getFullYear();
+   	var month= modified.getMonth() + 1;
+	var date = modified.getDate();
+	hours = update2.getHours();
+	minutes = update2.getMinutes();
+	seconds = update2.getSeconds();
+   	document.write( "最終更新：" + year + "年" + month + "月" + date + "日" +  hours + ':' +  minutes + ':' + seconds);
+	// --></script>
 	</body>
 </html>
