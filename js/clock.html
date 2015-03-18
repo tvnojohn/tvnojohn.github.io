@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>世界時計</title>
+		<script type="text/javascript" src="jump.js"></script>
 		<script>
 		//時計の表示
 		function clock(){
@@ -48,6 +49,7 @@
 			setInterval("clock()",1000);
 		}
 		</script>
+		<script type="text/javascript" src="jump.js"></script>
 		<style>
 			#clock{
 				font-family: "Courier New";
@@ -71,6 +73,8 @@
 			<div id = "date">----/--/-- ---</div>
 			<div id = "time">--:--:--</div>
 		</div>
-		<div id = "link"><a href="index.html">Home</a></div>
 	</body>
+	<form>
+		<input type="button" name="link" value="TOP" onclick="jump()">
+	</form>
 </html>

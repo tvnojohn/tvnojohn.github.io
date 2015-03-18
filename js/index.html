@@ -2,14 +2,22 @@
 <html>
 	<head>
 		<meta charset = "UTF_8">
-		<title>HOME</title>
+		<title>Top</title>
 		<script>
 			function showSlider(){
 				var sliderValue = document.getElementById("slider").value;
 				alert("スライダーの値:" + sliderValue);
 			}
 		</script>
+		<script type="text/javascript" src="selectbox.js"></script>
 	</head>
+	<form name="navi">
+		<select name="contents" onchange="selectNavi()">
+			<option>Top</option>
+			<option>clock</option>
+			<option>calc</option>
+		</select>
+	</form>
 	<body>
 		<div>hello world!</div>
 		<div>My name is John.</div>
