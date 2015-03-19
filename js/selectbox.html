@@ -7,10 +7,9 @@ var jpURL = new Array(
 
 function selectNavi(){
 	var num;
-	
-	num =document.navi.contents.selectedIndex;
-	
-	location.href = jpURL[num];
+	var parentWin = window.top;
+	num = document.navi.contents.selectedIndex;
+	window.parent.location.href = jpURL[num];
 }
 </script>
 <form name="navi">
