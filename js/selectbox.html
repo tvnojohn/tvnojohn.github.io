@@ -20,6 +20,14 @@ function selectNavi(){
 		</select>
 </form>
 
-<script>
-	document.navi.contents.options[0].selected = true;
+<script type="text/javascript">
+	for(i=0;i<3;i++){
+		if(jpURL[i]==window.referrer){
+			document.navi.contents.options[i].selected = true;
+			break;
+		}
+		document.write("i=",i);
+		document.write(jpURL[i],"<br>")
+		document.write(window.referrer,"<br>")	
+	}
 </script>
