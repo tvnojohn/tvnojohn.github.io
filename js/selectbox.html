@@ -1,0 +1,26 @@
+<script>
+var jpURL = new Array(
+"http://b1012038.github.io/",
+"http://b1012038.github.io/js/clock",
+"http://b1012038.github.io/js/calc"
+);
+
+function selectNavi(){
+	var num;
+	
+	num =document.navi.contents.selectedIndex;
+	
+	location.href = jpURL[num];
+}
+</script>
+<form name="navi">
+		<select name="contents" onchange="selectNavi()">
+			<option>Top</option>
+			<option>Clock</option>
+			<option>Calc</option>
+		</select>
+</form>
+
+<script>
+	document.navi.contents.options[0].selected = true;
+</script>
