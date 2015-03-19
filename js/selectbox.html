@@ -1,5 +1,6 @@
 <script>
 var jpURL = new Array(
+"",
 "http://b1012038.github.io/",
 "http://b1012038.github.io/js/clock",
 "http://b1012038.github.io/js/calc"
@@ -9,11 +10,12 @@ function selectNavi(){
 	var num;
 	var parentWin = window.top;
 	num = document.navi.contents.selectedIndex;
-	window.parent.location.href = jpURL[num];
+	if(num != 0) window.parent.location.href = jpURL[num];
 }
 </script>
 <form name="navi">
 		<select name="contents" onchange="selectNavi()">
+			<option>ページ一覧</option>
 			<option>Top</option>
 			<option>Clock</option>
 			<option>Calc</option>
@@ -21,13 +23,5 @@ function selectNavi(){
 </form>
 
 <script type="text/javascript">
-	for(i=0;i<3;i++){
-		if(jpURL[i]==window.referrer){
-			document.navi.contents.options[i].selected = true;
-			break;
-		}
-		document.write("i=",i);
-		document.write(jpURL[i],"<br>")
-		document.write(window.referrer,"<br>")	
-	}
+	document.navi.contents.options[i].selected = true;
 </script>
