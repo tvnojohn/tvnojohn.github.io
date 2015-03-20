@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>newWindow</title>
+</head>
+<body>
+<h3>別ウィンドウ表示</h3>
+<object type="text/html" data="selectbox.html" align="right" width="100px" height="50px">
+		<p>このブラウザでは表示できません．</p>
+</object>
+<script type="text/javascript" src="jump.js"></script>
+<script>
+function winOpen(){
+	window.open("http://b1012038.github.io/js/newWindow.html","subwin","width=320,height=240,top=100,left=50")	
+}
+function move1(yoko,take){
+	moveBy(yoko,take);	
+}
+function move2(yoko,take){
+	moveTo(yoko,take);
+}
+</script>
+</body>
+<form>
+	<input type="button" value="別窓" onclick="winOpen()"><br>
+	<input type="button" value="↑" onclick="move1(0,-10)" style="position:absolute; left:50px;"><br>
+	<input type="button" value="←" onclick="move1(-10,0)">
+	<input type="button" value="元の位置へ" onclick="move2(100,50)">
+	<input type="button" value="→" onclick="move1(10,0)"><br>
+	
+	<input type="button" value="↓" onclick="move1(0,10)"style="position:absolute; left:50px;"><br>
+	<input type="button" name="link" value="TOP" onclick="jump()">
+</form>
+</html>	
