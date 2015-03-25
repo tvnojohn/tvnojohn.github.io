@@ -11,6 +11,13 @@
 </object>
 <script type="text/javascript" src="jump.js"></script>
 <script>
+function winCenter(){
+	var w = ( screen.width-640 ) / 2;
+	var h = ( screen.height-480 ) /2;
+	
+	window.open("http://b1012038.github.io/js/newWindow.html", "","width=640,height=480"+",left="+w",top="+h);	
+}
+
 function winOpen(){
 	window.open("http://b1012038.github.io/js/newWindow.html","subwin","width=320,height=240,top=100,left=50")	
 }
@@ -23,7 +30,8 @@ function move2(yoko,take){
 </script>
 </body>
 <form>
-	<input type="button" value="別窓" onclick="winOpen()"><br>
+	<input type="button" value="別窓" onclick="winOpen()">
+	<input type="button" value="中央表示" onclick="winCenter()"><br>
 	<input type="button" value="↑" onclick="move1(0,-10)" style="position:absolute; left:50px;"><br>
 	<input type="button" value="←" onclick="move1(-10,0)">
 	<input type="button" value="元の位置へ" onclick="move2(100,50)">
