@@ -1,7 +1,7 @@
 document.onkeydown = typeCheck;
 
 function typeCheck(){
-	if ((event.keyCode >= 48 && event.keyCode <= 57) && event.shiftKey){
+	if ((event.keyCode >= 48 && event.keyCode <= 57) && !event.shiftKey){
    		calc_run(event.keyCode-48);
     	}
     	switch(event.keyCode){
