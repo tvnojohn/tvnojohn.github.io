@@ -17,18 +17,10 @@
 	$(function(){
 		var buckColor= ["White","Green","Blue"];
 		var clickCount = 0;
-		var nextClick = 1;
 		$(".chengeBG").click(function(){
-			if(++clickCount == buckColor.length){
-				clickCount = 0;
-				nextClick = 1;
-			} else{
-				if(++nextClick == buckColor.length){
-					nextClick = 0;
-				}
-			}
+			clickCount = ++clickCount % buckColor.length;
 			$(this).css("background-color",buckColor[clickCount]);
-			$(this).text("クリックすると"+buckColor[nextClick]+"になります．");
+			$(this).text("クリックすると"+buckColor[(clickCount+1) %  buckColor.length]+"になります．");
 		});
 	});
 	
@@ -36,12 +28,34 @@
 	$(function(){
 		var count = 0;
   		setInterval(function(){
-  			if(++count==11){
-  				count=0;
-  			}
+  			count=++count%10;
   			$(".counter").text(count);
     		},1000);
-	});		
+	});
+	
+	$(function(){
+		$("input").css('color','#999');
+		var input_val =[];
+		$("input").each(function(){
+			input_val.push($(this).val());
+		});
+		$("input").focus(function(){
+			var chk_num = $("input").index(this);
+			var chk_val = $("input").eq(chk_num).val();
+			if(chk_val == input_val[chk_num]) {
+				var def_val = $(this).val();
+            			$(this).val('');
+            			$(this).css('color', '#333');
+            			$(this).blur(function() {
+              				if($(this).val() == '') {
+                				$(this).val(def_val);
+                    				$(this).css('color', '#999');
+                    			}
+                    		});
+                  	}
+                });
+	});
+				
 </script>
 
 <div class="aoiMoji">
@@ -49,6 +63,7 @@
 </div>
 <div class="chengeBG">クリックするとGreenになります．</div>
 <div class="counter">0</div>
+<input name="your_text" value="入力してくだちい">
 <li><a href="http://memopad.bitter.jp/w3c/jQuery/">jQueryのメソッド</a></li>
 <li><a href="http://ozpa-h4.com/2012/11/07/jquery-lecture/">7つのサンプルでjQueryを学ぼう！「jQueryが全く分からない人のため」の超初級者向け入門講座</a></li>
 
