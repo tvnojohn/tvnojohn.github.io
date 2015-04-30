@@ -8,9 +8,12 @@
 	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
 </head>
 <script>
+	//ただ文字の色を変えているだけ
 	$(function(){
 		$(".aoiMoji").css("color","blue")
 	});
+	
+	//クリックするたびに色が変わるよ
 	$(function(){
 		var buckColor= ["White","Green","Blue"];
 		var clickCount = 0;
@@ -27,6 +30,17 @@
 			$(this).css("background-color",buckColor[clickCount]);
 			$(this).text("クリックすると"+buckColor[nextClick]+"になります．");
 		});
+	});
+	
+	//◯秒毎に△をするfunction
+	$(function(){
+		var count = 0;
+  		setInterval(function(){
+  			if(++count==11){
+  				count=0;
+  			}
+  			$(".counter").text(count);
+    		},1000);
 	});		
 </script>
 
@@ -34,6 +48,7 @@
 青
 </div>
 <div class="chengeBG">クリックするとGreenになります．</div>
+<div class="counter">0</div>
 <li><a href="http://memopad.bitter.jp/w3c/jQuery/">jQueryのメソッド</a></li>
 <li><a href="http://ozpa-h4.com/2012/11/07/jquery-lecture/">7つのサンプルでjQueryを学ぼう！「jQueryが全く分からない人のため」の超初級者向け入門講座</a></li>
 
