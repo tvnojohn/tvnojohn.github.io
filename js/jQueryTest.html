@@ -34,36 +34,45 @@
 	});
 	
 	$(function(){
-		$("input").css('color','#999');
-		var input_val =[];
-		$("input").each(function(){
-			input_val.push($(this).val());
+		$("#textBox").css("color","#999999");
+		$("#textBox").focus(function()	{ 
+			if($(this).val() == this.defaultValue){
+				$(this).val("");
+				$(this).css("color","#000000");
+			}
+		}).blur(function(){
+			if(!$(this).val() | $(this).val() == this.defaultValue){
+				$(this).val(this.defaultValue).css("color","#999999");
+			}
 		});
-		$("input").focus(function(){
-			var chk_num = $("input").index(this);
-			var chk_val = $("input").eq(chk_num).val();
-			if(chk_val == input_val[chk_num]) {
-				var def_val = $(this).val();
-            			$(this).val('');
-            			$(this).css('color', '#333');
-            			$(this).blur(function() {
-              				if($(this).val() == '') {
-                				$(this).val(def_val);
-                    				$(this).css('color', '#999');
-                    			}
-                    		});
-                  	}
-                });
 	});
-				
+	
+	$(function() {
+		var submitText;
+  		$("#submit").click(function(){
+  			submitText = $("#textBox").val();
+  			$(document).ready(function(){
+  				$("#target").append("<tr><td>"+ submitText+"</td><td><input type='button' id='delete' value='削除'></td></tr>");
+	  			});
+  		});
+	});
+	
+	$(function(){
+			
+	});
 </script>
 
-<div class="aoiMoji">
+<div class="aoiMoji">      
 青
 </div>
 <div class="chengeBG">クリックするとGreenになります．</div>
 <div class="counter">0</div>
-<input name="your_text" value="入力してくだちい">
+<div>
+<input name="your_text" class="yourTextBox" id="textBox" value="入力してくだちい">
+<input type="button" id="submit" value="入力"> 
+</div>
+<table id="target" >
+</table>
 <li><a href="http://memopad.bitter.jp/w3c/jQuery/">jQueryのメソッド</a></li>
 <li><a href="http://ozpa-h4.com/2012/11/07/jquery-lecture/">7つのサンプルでjQueryを学ぼう！「jQueryが全く分からない人のため」の超初級者向け入門講座</a></li>
 
