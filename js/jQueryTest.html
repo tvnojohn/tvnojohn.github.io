@@ -33,10 +33,20 @@
     		},1000);
 	});
 	
+	
 	$(function(){
+		if(localStorage.getItem('memo')){
+			$('#target').val(localStorage.getItem('memo'));
+		}
+		
+		var natural = $("#textBox").val();
+		var submitText;
+		var idNumber = 1;
+		
+		//テキストボックス内の文字
 		$("#textBox").css("color","#999999");
 		$("#textBox").focus(function()	{ 
-			if($(this).val() == this.defaultValue){
+			if($(this).val() == natural){// this.defaultValue){
 				$(this).val("");
 				$(this).css("color","#000000");
 			}
@@ -45,24 +55,29 @@
 				$(this).val(this.defaultValue).css("color","#999999");
 			}
 		});
+		
+		//入力ボタン処理
+  		$("#submit").click(function(){
+  			submitText = $("#textBox").val();
+  			if(submitText != natural){
+  				$(document).ready(function(){
+    					$("#target").append("<tr><td>"+ submitText+"</td><td><input type='button' id='delete' class='btn' value='削除'></td>id='delete' class='btn1'</tr>"
+	  				);
+	  				$("#delete").attr('id','delete' + idNumber++);
+	  				localStorage.setItem('memo',$('#target').val());
+	  				console.log(localStorage.getItem('memo'));
+	  			});
+	  		}
+  		});
 	});
 	
 	$(function() {
-		var submitText;
-		var idNumber = 1;
-  		$("#submit").click(function(){
-  			submitText = $("#textBox").val();
-  			$(document).ready(function(){
-    				$("#target").append("<tr><td>"+ submitText+"</td><td><input type='button' id='delete' class='btn' value='削除'></td>id='delete' class='btn1'</tr>"
-	  			);
-	  			$("#delete").attr('id','delete' + idNumber);
-	  		});
-  		});
+		
 	});
 	
 	$(function(){
 		$(document).on('click','.btn',function(){
-			if(confirm("削除してもいい？")){
+			if(confirm($(this).attr('id')+"を削除してもいい？")){
 				$(this).parent().parent().remove();	
 			}
 		});
