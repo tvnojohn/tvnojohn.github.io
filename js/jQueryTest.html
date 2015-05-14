@@ -49,16 +49,23 @@
 	
 	$(function() {
 		var submitText;
+		var idNumber = 1;
   		$("#submit").click(function(){
   			submitText = $("#textBox").val();
   			$(document).ready(function(){
-  				$("#target").append("<tr><td>"+ submitText+"</td><td><input type='button' id='delete' value='削除'></td></tr>");
-	  			});
+    				$("#target").append("<tr><td>"+ submitText+"</td><td><input type='button' id='delete' class='btn' value='削除'></td>id='delete' class='btn1'</tr>"
+	  			);
+	  			$("#delete").attr('id','delete' + idNumber);
+	  		});
   		});
 	});
 	
 	$(function(){
-			
+		$(document).on('click','.btn',function(){
+			if(confirm("削除してもいい？")){
+				$(this).parent().parent().remove();	
+			}
+		});
 	});
 </script>
 
