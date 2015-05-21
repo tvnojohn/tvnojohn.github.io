@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<title>GoogleReadGirl</title>
+	
+	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+</head>
+<script>
+	$(function(){
+		var natural = $("#textBox").val();
+		var submitText;
+		var idNumber = 1;
+		
+		//テキストボックス内の文字
+		$("#textBox").css("color","#999999");
+		$("#textBox").focus(function()	{ 
+			if($(this).val() == natural){// this.defaultValue){
+				$(this).val("");
+				$(this).css("color","#000000");
+			}
+		}).blur(function(){
+			if(!$(this).val() | $(this).val() == this.defaultValue){
+				$(this).val(this.defaultValue).css("color","#999999");
+			}
+		});
+		
+		//入力ボタン処理
+  		$("#submit").click(function(){
+  			submitText = $("#textBox").val();
+  			if(submitText != natural){
+  				init(submitText)
+	  		}
+  		});
+	});
+	
+	//【指定言語】tl=　日本語:ja 英語:en スペイン語:es イタリア語:it フランス語:fr ドイツ語:de ロシア語:ru
+//          　   　 ｵﾗﾝﾀﾞ語:nl　ｷﾞﾘｼｬ語:el　ﾎﾟﾙﾄｶﾞﾙ語:pt　ﾎﾟｰﾗﾝﾄﾞ語:pl　中国語:zh-CN　韓国語:ko
+//【メッセージ】q=
+function init(readText) {
+   var language = "ja";
+   var message = "こんにちは。いつも、しせつ研究所ネオテックラボをご利用いただきありがとうございます。私はGoogleテキストツースピーチの日本語女性アナウンサーです。よろしくね";
+   var double = "yes"; //★あるいは"no"
+   var number = (new Date().getTime()).toString(); //【イメージ・リフレッシュ用】
+   var base = document.getElementById("GoogleTTS");
+   var Obj = document.createElement('iframe');
+   Obj.setAttribute('border','0');
+   Obj.style.width = '300px';
+   Obj.style.height = '1px';
+   Obj.src = "GoogleTTSx.htm?tl=" + language + "&q=" + readText + "&double=" + double +"&dummy=" + number;
+   base.appendChild(Obj);
+}</script>
+<div>
+<input name="your_text" class="yourTextBox" id="textBox" value="入力してくだちい">
+<input type="button" id="submit" value="入力"> 
+</div>
+<div id="GoogleTTS" name="GoogleTTS" style="visibility:hidden;"></div>
+<div>[参考サイト]
+<li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
+</div>
+</html>
