@@ -25,7 +25,7 @@ function InitializeByParam() {
    } else {
       if(data.indexOf("=")<0) { //旧形式のパラメータ
          var oldparam = data.split('&');
-         data = "tl=" + oldparam[0] + "&q=" + oldparam[1] + "&double=yes";
+         data = "tl=" + oldparam[0] + "&q=" + oldparam[1] + "&double=no";
       }
    }
    var param = data.split('&'); // 『&』で区切られたパラメータを取得する

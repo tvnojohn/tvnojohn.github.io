@@ -40,23 +40,23 @@
 //【メッセージ】q=
 function init(readText) {
    var language = "ja";
-   var message = "こんにちは。いつも、しせつ研究所ネオテックラボをご利用いただきありがとうございます。私はGoogleテキストツースピーチの日本語女性アナウンサーです。よろしくね";
    var double = "yes"; //★あるいは"no"
    var number = (new Date().getTime()).toString(); //【イメージ・リフレッシュ用】
    var base = document.getElementById("GoogleTTS");
-   var Obj = document.createElement('iframe');
+　var Obj = document.createElement('iframe');
    Obj.setAttribute('border','0');
    Obj.style.width = '300px';
    Obj.style.height = '1px';
    Obj.src = "GoogleTTSx.htm?tl=" + language + "&q=" + readText + "&double=" + double +"&dummy=" + number;
    base.appendChild(Obj);
-}</script>
+}
+</script>
 <div>
 <input name="your_text" class="yourTextBox" id="textBox" value="入力してくだちい">
 <input type="button" id="submit" value="入力"> 
 </div>
-<div id="GoogleTTS" name="GoogleTTS" style="visibility:hidden;"></div>
 <div>[参考サイト]
 <li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
 </div>
+<div id="GoogleTTS" name="GoogleTTS" style="visibility:hidden;"></div>
 </html>
