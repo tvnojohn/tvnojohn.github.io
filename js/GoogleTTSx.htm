@@ -39,7 +39,7 @@ function InitializeByParam() {
    NTL_GoogleTTS.Double = arg["double"];
    var Number = (new Date().getTime()).toString(); //【イメージ・リフレッシュ用】
    NTL_GoogleTTS.URL = "http://translate.google.com/translate_tts"
-                     + "?tl=" + NTL_GoogleTTS.Language + "&q=" + NTL_GoogleTTS.Message + "&dummy=" + Number;
+                     + "?tl=" + NTL_GoogleTTS.Language + "&q=" + NTL_GoogleTTS.Message //+ "&dummy=" + Number;
    NTL_GoogleTTS.Count = 0;
    NTL_GoogleTTS.Browser = NTL_CheckYourBrowser(); //【ブラウザが何か調べる】
    var br = NTL_GoogleTTS.Browser;
