@@ -6,8 +6,6 @@
 	<title>GoogleReadGirl</title>
 	
 	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
-	<script type="text/javascript" src="swfobject.js"></script>
-	<script type="text/javascript" src="copyclipb.js"></script>
 </head>
 <script type="text/javascript">
 	var language = "ja";
@@ -65,8 +63,6 @@
    				language = "en";
    			}
    			googleURL ="http://translate.google.com/translate_tts?tl=" + language + "&q="+ submitText;
-   			$("#txt1").val(googleURL);
-   			console.log($("#txt1").val());
       			$("#voiceurl a").attr("href",googleURL);
       		}
       		
@@ -79,7 +75,6 @@
 				$(".volumeSwitch").val("ON");
 			}
 		});
-		createCopyButtonFromTextbox("swf1", $("txt1"), "コピー", 80);
   	});
 	
 	//【指定言語】tl=　日本語:ja 英語:en スペイン語:es イタリア語:it フランス語:fr ドイツ語:de ロシア語:ru
@@ -119,12 +114,8 @@
 <input type="button" id="submit" value="入力"> 
 </div>
 <li class="chengeBG" id="voiceurl" ><a href = "http://translate.google.com/translate_tts?tl=&q=">飛びます</a></li>
-<div>
-	<div id="swf1" class="btn">[copy]</div>
-</div>
 <div>[参考サイト]
 <li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
 </div>
 <div id="GoogleTTS" name="GoogleTTS" style="visibility:hidden;"></div>
-<input type="text" id="txt1" value="1" /><br />
 </html>
