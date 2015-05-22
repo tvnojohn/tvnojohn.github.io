@@ -6,7 +6,6 @@
 	<title>GoogleReadGirl</title>
 	
 	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
-	<script type="text/javascript" src="jquery.zclip.min.js"></script>
 </head>
 <script>
 	var language = "ja";
@@ -76,11 +75,6 @@
 				$(".volumeSwitch").val("ON");
 			}
 		});
-		
-		$("#copybtn1").zclip({
-			path:"ZeroClipboard.swf",
-			copy:googleURL
-		});
   	});
 	
 	//【指定言語】tl=　日本語:ja 英語:en スペイン語:es イタリア語:it フランス語:fr ドイツ語:de ロシア語:ru
@@ -120,7 +114,6 @@
 <input type="button" id="submit" value="入力"> 
 </div>
 <li class="chengeBG" id="voiceurl" ><a href = "http://translate.google.com/translate_tts?tl=&q=">飛びます</a></li>
-<a id="copybtn1" class="btn">Copyします</a>
 <div>[参考サイト]
 <li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
 </div>
