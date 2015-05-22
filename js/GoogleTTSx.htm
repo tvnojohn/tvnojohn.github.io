@@ -20,12 +20,10 @@ var NTL_GoogleTTS = {
 function InitializeByParam() { 
    //【decodeURIComponentでlocation.hrefを日本語文字列に変換する】
    var data = decodeURIComponent(location.href).split("?")[1]; //【区切り記号?以降のパラメータを取得する】
-    console.log(data);
    if(data==undefined) {
-      data = "tl=en&q=nullpointerexception。&double=yes";
+      data = "tl=en&q=nullpointerexception.&double=no";
    } else {
       if(data.indexOf("=")<0) { //旧形式のパラメータ
-       console.log(data);
          var oldparam = data.split('&');
          data = "tl=" + oldparam[0] + "&q=" + oldparam[1] + "&double=no";
       }
@@ -76,6 +74,7 @@ function GoogleTTS_Common() {
    obj.style.height = 39;
    obj.setAttribute("type","audio/mpeg");
    obj.src = NTL_GoogleTTS.URL;
+   console.log(obj);
    base.appendChild(obj);
 }
 
