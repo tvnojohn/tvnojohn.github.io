@@ -32,10 +32,17 @@
   		$("#submit").click(function(){
   			submitText = $("#textBox").val();
   			if(submitText != natural){
-  				init(submitText)
+  				init(submitText);
 	  		}
   		});
-	});
+  	
+  		$(window).keydown(function(e){
+  			submitText = $("#textBox").val();
+  			if(e.which == 13&&(submitText != natural || !submitText)){
+      				init($("#textBox").val());
+      			}
+    		});
+  	});
 	
 	$(function(){
 		$('input[name=language]:eq(0)').prop('checked', true);

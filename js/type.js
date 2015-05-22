@@ -1,6 +1,7 @@
 document.onkeydown = typeCheck;
 
 function typeCheck(){
+	console.log(event.keyCode);
 	if ((event.keyCode >= 48 && event.keyCode <= 57) && !event.shiftKey){
    		calc_run(event.keyCode-48);
     	}
@@ -29,7 +30,7 @@ function typeCheck(){
     		calc_period()
     		break;
     	default:
-    		//console.log(event.keyCode);
+    		console.log(event.keyCode);
     		break;	
     }
 }
