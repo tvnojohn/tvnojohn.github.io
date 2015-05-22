@@ -6,10 +6,12 @@
 	<title>GoogleReadGirl</title>
 	
 	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="jquery.zclip.js"></script>
 </head>
 <script>
 	var language = "ja";
 	var volumeFlag = "on"
+	var googleURL
 	$(function(){
 		var natural = $("#textBox").val();
 		var submitText;
@@ -61,7 +63,7 @@
    			}else{
    				language = "en";
    			}
-   			var googleURL="http://translate.google.com/translate_tts?tl=" + language + "&q="+ submitText;
+   			googleURL ="http://translate.google.com/translate_tts?tl=" + language + "&q="+ submitText;
       			$("#voiceurl a").attr("href",googleURL);
       		}
       		
@@ -73,6 +75,14 @@
 				volumeFlag="on";
 				$(".volumeSwitch").val("ON");
 			}
+		});
+		
+		$(document).ready(function(){
+			$("#copy-button").zclip({
+    		    		copy: function(){
+      					return googleURL;
+      				}
+			});
 		});	
   	});
 	
@@ -112,7 +122,8 @@
 <input name="your_text" class="yourTextBox" id="textBox" value="入力してくだちい">
 <input type="button" id="submit" value="入力"> 
 </div>
-<li class="chengeBG" id="voiceurl" ><a href = "http://translate.google.com/translate_tts?tl=&q=">コピーしてね</a></li>
+<li class="chengeBG" id="voiceurl" ><a href = "http://translate.google.com/translate_tts?tl=&q=">飛びます</a></li>
+<a id="copy-button" href="#">Copyします</a>
 <div>[参考サイト]
 <li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
 </div>
