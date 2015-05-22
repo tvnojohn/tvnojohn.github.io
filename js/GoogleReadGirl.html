@@ -75,6 +75,7 @@ function init(readText) {
    console.log(readText);
    Obj.src = "GoogleTTSx.htm?tl=" + language + "&q=" + readText //+ "&double=" + double +"&dummy=" + number;
    base.appendChild(Obj);
+   document.getElementById("voiceurl").innerHTML=Obj.src;
 }
 </script>
 <input id="japan" type="radio" name="language" value="0"><label>日本語</label>
@@ -83,6 +84,7 @@ function init(readText) {
 <input name="your_text" class="yourTextBox" id="textBox" value="入力してくだちい">
 <input type="button" id="submit" value="入力"> 
 </div>
+<div class="chengeBG" id="voiceurl" >コピーしてね</div>
 <div>[参考サイト]
 <li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
 </div>
