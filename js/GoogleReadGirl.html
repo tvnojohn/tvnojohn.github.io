@@ -15,6 +15,8 @@
 		
 		//テキストボックス内の文字
 		$("#textBox").css("color","#999999");
+		$("#textBox").width(200);
+		$("#textBox").height(40);
 		$("#textBox").focus(function()	{ 
 			if($(this).val() == natural){// this.defaultValue){
 				$(this).val("");
@@ -35,11 +37,27 @@
   		});
 	});
 	
+	$(function(){
+		$('input[name=language]:eq(0)').prop('checked', true);
+		$('[name=radio-change]').click(function() {
+    			if ($('input[name=language]:eq(1)').prop('checked')) {
+        			$('input[name=language]:eq(0)').prop('checked', true);
+    			} else {
+       		 		$('input[name=language]:eq(1)').prop('checked', true);
+   	 		}
+		});
+	});
+	
 	//【指定言語】tl=　日本語:ja 英語:en スペイン語:es イタリア語:it フランス語:fr ドイツ語:de ロシア語:ru
 //          　   　 ｵﾗﾝﾀﾞ語:nl　ｷﾞﾘｼｬ語:el　ﾎﾟﾙﾄｶﾞﾙ語:pt　ﾎﾟｰﾗﾝﾄﾞ語:pl　中国語:zh-CN　韓国語:ko
 //【メッセージ】q=
 function init(readText) {
    var language = "ja";
+   if($('input[name="language"]:checked').val()==0){
+   	language = "ja";
+   }else{
+   	language = "en";
+   }	
    var double = "yes"; //★あるいは"no"
    var number = (new Date().getTime()).toString(); //【イメージ・リフレッシュ用】
    var base = document.getElementById("GoogleTTS");
@@ -52,6 +70,8 @@ function init(readText) {
    base.appendChild(Obj);
 }
 </script>
+<input id="japan" type="radio" name="language" value="0"><label>日本語</label>
+<input id="english" type="radio" name="language" value="1"><label>english</label>
 <div>
 <input name="your_text" class="yourTextBox" id="textBox" value="入力してくだちい">
 <input type="button" id="submit" value="入力"> 

@@ -20,6 +20,7 @@ var NTL_GoogleTTS = {
 function InitializeByParam() { 
    //【decodeURIComponentでlocation.hrefを日本語文字列に変換する】
    var data = decodeURIComponent(location.href).split("?")[1]; //【区切り記号?以降のパラメータを取得する】
+    console.log(data);
    if(data==undefined) {
       data = "tl=en&q=nullpointerexception。&double=yes";
    } else {
