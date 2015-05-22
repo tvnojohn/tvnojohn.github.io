@@ -24,6 +24,7 @@ function InitializeByParam() {
       data = "tl=en&q=nullpointerexception。&double=yes";
    } else {
       if(data.indexOf("=")<0) { //旧形式のパラメータ
+       console.log(data);
          var oldparam = data.split('&');
          data = "tl=" + oldparam[0] + "&q=" + oldparam[1] + "&double=no";
       }
