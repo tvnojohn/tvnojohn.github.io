@@ -79,7 +79,7 @@
 				$(".volumeSwitch").val("ON");
 			}
 		});
-		createCopyButton("swf1", $("txt1").val(), "コピー", 80);
+		createCopyButtonFromTextbox("swf1", $("txt1"), "コピー", 80);
   	});
 	
 	//【指定言語】tl=　日本語:ja 英語:en スペイン語:es イタリア語:it フランス語:fr ドイツ語:de ロシア語:ru
@@ -126,5 +126,5 @@
 <li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
 </div>
 <div id="GoogleTTS" name="GoogleTTS" style="visibility:hidden;"></div>
-<input type="text" id="txt1" value="1" /><br />
+<input type="text" id="txt1" value="1" style="visibility:hidden;/><br />
 </html>
