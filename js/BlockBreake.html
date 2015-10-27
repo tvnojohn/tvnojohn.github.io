@@ -1,0 +1,247 @@
+
+<html>
+<body>
+<canvas id="canvas1" width="400" height="300"></canvas>
+<script type="text/javascript">
+
+	// canvas要素のDOMオブジェクトを取得
+	var canvas = document.getElementById("canvas1");
+	// 描画コンテキストを取得する
+	var context = canvas.getContext("2d");
+	
+	var mouseX = 0;
+	var mouseY = 0;
+	function movehandler(event)
+	{
+		mouseX = event.offsetX;
+		mouseY = event.offsetY;
+	}
+	window.onmousemove = movehandler;
+	
+	var mouseclickX = 0;
+	var mouseclickY = 0;
+	function block(_x, _y, _hit) {
+		this.x = _x || -1;
+		this.y = _y || -1;
+		this.hit = _hit || 0;
+		this.life = _hit || 0;
+	}
+	
+	function blocks(){
+		this.data = new Array(20);
+		for(var i=0; i<20; i++){
+			this.data[i] = new block();
+		}
+	}
+	
+	var block_data = new blocks();
+	console.log(block_data.data);
+	
+	function mouseclicked(event)
+	{
+		mouseclickX = event.offsetX;
+		mouseclickY = event.offsetY;
+		for(var i = 0; i<20; i++){
+			if(block_data.data[i].hit == 0){
+				block_data.data[i].x = mouseclickX;
+				block_data.data[i].y = mouseclickY;
+				block_data.data[i].hit = 2;
+				block_data.data[i].life = 2;
+				break;
+			}
+		}
+	}
+	
+	if(mouseX >=0 && mouseX <= canvas.width && mouseY >= 0 &&mouseY <= canvas.height){
+		window.onclick = mouseclicked;
+	}
+	
+	function typecheck(){
+		if(ball_count == 0){
+			dx = 1;
+			dy = 2;
+			ball_count = 3;
+			for (var i = 0; i<20; i++){
+			block_data.data[i].hit = block_data.data[i].life;
+			}
+		}
+	}
+	
+	document.onkeydown = typecheck;
+	
+	var x = 0;
+	var y = 100;
+	var dx = 0;
+	var dy = 0;
+	var sx = 1;
+	var sy = 2;
+	
+	var count = 0;
+	var ball_count = 0;
+		
+	// var hit = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2];			// <---
+
+	var r_w = 50.0;	// racket width
+	var b_w = 40.0;	// block width
+	var b_h = 40.0;	// block height
+	var a_w = 15.0;	// ball width
+	var a_h = 15.0;	// ball height
+
+	function checkHit(x, y)
+	{
+		if(y + a_h < 250 || y + a_h > 251){	
+		} 
+		else if(x + a_w >= mouseX && x <= mouseX + r_w)
+		{
+			if(x + a_w/2 < mouseX + r_w/3 && dx > 0){
+				dx = -dx;
+			}
+			else if(x + a_w/2 > mouseX + r_w*2/3 && dx < 0){
+				dx = -dx;
+			}else{
+				dx = dx;
+			}
+			dy=-dy;
+		}
+	}
+
+	function show_block(n)
+	{
+		switch(block_data.data[n].hit)	{
+			case 1:
+				context.fillStyle = "rgb(255, 0, 0)";
+				break;
+			case 2:
+				context.fillStyle = "#F7FF1A";
+				break;
+		}
+		context.fillRect(block_data.data[n].x, block_data.data[n].y, b_w, b_h);
+		context.fillStyle = "rgb(0, 0, 0)";
+		context.fillText(block_data.data[n].hit, block_data.data[n].x, block_data.data[n].y - 5);
+	}
+
+	function checkHitBlock(n, x, y)
+	{
+		var left = block_data.data[n].x;
+		var right =  block_data.data[n].x+b_w;
+		var top = block_data.data[n].y;
+		var bottom = block_data.data[n].y + b_h;
+		var cx = left + b_w / 2;
+		var cy = top + b_h / 2;
+		var y1, y2;
+
+		if((x + a_w <= left) || (x >= right) || (y + a_h <= top) || (y >= bottom)) {
+			return 0;
+		}
+
+		x = x + a_w / 2;
+		y = y + a_h / 2;
+		y1 = y - (-(x - cx) * b_h / b_w + cy);
+		y2 = y - ( (x - cx) * b_h / b_w + cy);
+
+		if(y1 > 0) {
+			if(y2 > 0) {
+				return 1;
+			} else if(y2 == 0) {
+				return 2;
+			} else {
+				return 3;
+			}
+		} else if (y1 < 0) {
+			if(y2 > 0) {
+				return 7;
+			} else if(y2 == 0) {
+				return 6;
+			} else {
+				return 5;
+			}
+		} else {
+			if(y2 > 0) {
+				return 8;
+			} else if(y2 == 0) {
+				return -1;
+			} else {
+				return 4;
+			}
+		}
+	}
+
+	function draw()
+	{
+		var ref = 0;
+
+		// move ball
+		x = x + dx;
+		y = y + dy;
+
+		// check reflection
+		if(x + a_w >= 400) {
+			dx = -1;
+		} else if(x < 0) {
+			dx = 1;
+		}
+
+		if(y + a_w > 300) {
+			x = 0;
+			y = 100;
+			dx = 1;
+			dy = 2;
+			count = 0;
+			ball_count--;
+			if(ball_count == 0) {
+				dx = 0;
+				dy = 0;
+			}
+		} else if(y < 0) {
+			dy = 2;
+		}
+
+		context.fillStyle = "rgb(250, 130, 50)";
+		context.fillRect(0, 0, canvas.width, canvas.height);
+
+		context.fillStyle = "rgb(0, 0, 0)";
+		context.fillRect(x, y, a_w, a_w);		// ball
+		context.fillRect(mouseX, 250, r_w, 3);	// pad
+
+		for(var i=0; i<20; i++) {
+			if(block_data.data[i].hit > 0) {
+				show_block(i);
+				ref = checkHitBlock(i, x, y);
+				switch (ref) {
+					case 1:
+						block_data.data[i].hit--;
+					case 2:
+					case 8:
+						dy = sy;
+						break;
+					case 5:
+						block_data.data[i].hit--;
+					case 4:
+					case 6:
+						dy = -sy;
+						break;
+				}
+				switch (ref) {
+					case 2:
+					case 3:
+					case 4:
+						dx = sx;
+						break;
+					case 6:
+					case 7:
+					case 8:
+						dx = -sx;
+						break;
+				}
+			}
+		}
+
+		context.fillText(count, 10, 295);
+
+		checkHit(x, y);
+	}
+	setInterval(draw, 10);
+
+</script>
+</body>
+</html>
