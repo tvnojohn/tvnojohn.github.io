@@ -6,6 +6,7 @@
 	<title>GoogleReadGirl</title>
 	
 	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="tweet.js"></script>
 </head>
 <script type="text/javascript">
 	var language = "ja";
@@ -40,10 +41,10 @@
   		});
   	
   		$(window).keydown(function(e){
-  			changeLink();
   			if(e.which == 13&&(submitText != natural || !submitText)){
       				init($("#textBox").val());
       			}
+      			changeLink();
     		});
     		
     		$('input[name=language]:eq(0)').prop('checked', true);
@@ -63,7 +64,7 @@
    				language = "en";
    			}
    			googleURL ="http://translate.google.com/translate_tts?tl=" + language + "&q="+ submitText;
-      			$("#voiceurl a").attr("href",googleURL);
+      			$("#voiceurl a").attr("href", googleURL);
       		}
       		
       		$(".volumeSwitch").click(function(){
@@ -75,6 +76,22 @@
 				$(".volumeSwitch").val("ON");
 			}
 		});
+		
+		(function (win, doc, $){
+			var $txt = $(".yourTextBox");
+   			var $tweet = $("#tweet");
+   		
+   			$("html").keyup(function(e) {
+   				var encstr = encodeURI($txt.val());
+   				var $widget = $("#twitter-widget-0"),
+            				src = $widget.attr("src"),
+            				url = src.replace(/\&text=.*\&/, "&text=" + encodeURIComponent('http://translate.google.com/translate_tts?tl='+ language + '&q=' + encstr ) + "&");
+        
+        				$widget.attr({src: url});
+        				$tweet.html("").append($widget);
+    			});
+    
+		})(this, document, $);
   	});
 	
 	//【指定言語】tl=　日本語:ja 英語:en スペイン語:es イタリア語:it フランス語:fr ドイツ語:de ロシア語:ru
@@ -101,7 +118,12 @@
    			/*document.getElementById("voiceurl").innerHTML= Obj.src //"http://translate.google.com/translate_tts?tl=&q="+ readText;
    			document.getElementById("voiceurl").a_href = Obj.src;*/
    		}
-}
+   		
+   	}
+   	
+   	
+
+   		
 </script>
 <div>言語　　　　
 <input id="japan" type="radio" name="language" value="0"><label>日本語</label>
@@ -111,9 +133,12 @@
 </div>
 <div>
 <input name="your_text" class="yourTextBox" id="textBox" value="入力してくだちい">
-<input type="button" id="submit" value="入力"> 
+<input type="button" class="btn make" id="submit" value="入力"> 
 </div>
 <li class="chengeBG" id="voiceurl" ><a href = "http://translate.google.com/translate_tts?tl=&q=">飛びます</a></li>
+<div id="tweet">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-text="null" data-lang="ja">tweet</a>
+</div>
 <div>[参考サイト]
 <li><a href="http://www.neo-tech-lab.co.uk/GoogleTTS/">【Google翻訳Text-To-Speech(TTS)の使い方】私設研究所Neo-Tech-Lab.com</a></li>
 </div>
