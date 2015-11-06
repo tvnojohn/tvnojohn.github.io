@@ -41,7 +41,11 @@
   			for(var i = 0; i <rawText.length; i++){
   				newText += rawText.charAt(i) + "゛";
   			}
-  			newText += "！゛！゛！゛！゛！゛！゛！゛";
+  			if(newText){ 
+	  			newText += "！゛！゛！゛！゛！゛！゛！゛";
+	  		}else{
+	  			newText = "ど゛お゛し゛て゛入゛力゛し゛て゛く゛れ゛な゛い゛ん゛だ゛よ゛お゛お゛お゛お゛お゛お゛お゛！゛！゛！゛！゛！゛！゛！゛";
+	  		}
   			$("#changeTextBox").val(newText).css("color","#FF2B47");
   		});
     		
