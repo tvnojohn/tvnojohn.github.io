@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
 	
@@ -7,6 +6,7 @@
 	
 	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="tweet.js"></script>
+	<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>
 </head>
 <script type="text/javascript">
 	var inputText = $("#textBox");
@@ -61,6 +61,7 @@
         
         				$widget.attr({src: url});
         				$tweet.html("").append($widget);
+        				$(".line btn").attr("href", "http://line.me/R/msg/text/?" + $("#changeTextBox").val());
     			});
     
 		})(this, document, $);
@@ -73,4 +74,10 @@
 <div><input name="chane_text" id="changeTextBox" value="ど゛お゛し゛て゛入゛力゛し゛て゛く゛れ゛な゛い゛ん゛だ゛よ゛お゛お゛お゛お゛お゛お゛お゛！゛！゛！゛！゛！゛！゛！゛"></div>
 <div id="tweet">
     <a href="https://twitter.com/share" class="twitter-share-button" data-text="null" data-lang="ja">つ゛い゛ー゛と゛お゛お゛お゛お゛</a>
+    <script type="text/javascript">
+    new media_line_me.LineButton({"pc":true,"lang":"ja","type":"b","text":"a","withUrl":true});
+    </script>
+    <a class="line btn" href="http://line.me/R/msg/text/?[任意のテキスト][共有したいURL]">LINEで送る</a>
 </div>
+</span>
+</html>
