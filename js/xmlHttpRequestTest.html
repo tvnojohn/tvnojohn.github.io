@@ -6,8 +6,15 @@
 <script type="text/javascript"><!--
 var xmlHttpReq;
 var txt="";
+<<<<<<< HEAD
 function loadFile(fileName, id) {
   xmlHttpReq = createHttpRequest();
+=======
+
+function loadFile(fileName, id) {
+  xmlHttpReq = createHttpRequest();
+
+>>>>>>> origin/master
   if (xmlHttpReq) {
     xmlHttpReq.open('GET', fileName ,true);
     xmlHttpReq.onreadystatechange = function() {
@@ -16,6 +23,7 @@ function loadFile(fileName, id) {
       }
     }
   }
+<<<<<<< HEAD
   xmlHttpReq.send(null);
 }
 function saveFile(fileName, id) {
@@ -35,6 +43,33 @@ function createHttpRequest() {
  }
   return x;
 }
+=======
+
+  xmlHttpReq.send(null);
+}
+
+function saveFile(fileName, id) {
+  txt = document.getElementById(id).value;
+
+  //xmlHttpReq = createHttpRequest();
+  if (xmlHttpReq) {
+   xmlHttpReq.open("GET", fileName+"?text="+escape(txt), true);
+   //document.getElementById(id).value = xmlHttpReq.responseText;
+  }
+
+  xmlHttpReq.send(null);
+}
+
+function createHttpRequest() {
+  var x = null;
+
+  // for IE7, Firefox, Safari
+  if (window.XMLHttpRequest) {
+  return new XMLHttpRequest();
+ }
+  return x;
+}
+>>>>>>> origin/master
 // --></script>
 </head>
 
