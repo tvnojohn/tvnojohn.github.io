@@ -3,11 +3,9 @@ function loadFile(fileName){
 	xmlHttpReq.open('GET', fileName, true);
 	xmlHttpReq.onreadystatechange = function(){
 		if(xmlHttpReq.readyState == 4){
-			paths = xmlHttpReq.responseText.split("\r\n");
+			paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
 			var out = "<html>";
-			for(n=0;n<paths.length;n++){
-				out += "<a>" + paths[n] + "</a><br>\n";
-			}
+			out += paths
 			out += "</html>";
 			document.getElementById("out").innerHTML = out;
 		}

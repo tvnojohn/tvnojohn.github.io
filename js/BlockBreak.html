@@ -64,8 +64,6 @@
 	function mouseclicked(event)
 	{
 		for(var i = 0; i<20; i++){
-			console.log(block_data.data[i].x);
-			console.log(block_data.data[i].y);
 			if(dx*dy == 0 && block_data.data[i].life == 0){
 				if(block_data.data[i].x-mouseX==0 && mouseY - block_data.data[i].y==0){
 						break;
@@ -75,7 +73,6 @@
 					block_data.data[i].hit = 2;
 					block_data.data[i].life = 2;
 					block_data.datacheck++;
-					console.log(i);
 					break;				
 				}
 			}
