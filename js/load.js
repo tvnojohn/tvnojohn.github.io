@@ -11,6 +11,7 @@ function loadFile(fileName){
 		}
 	}
 	xmlHttpReq.send(null);
+	loadStage();
 }
 
 function createHttpRequest(){
