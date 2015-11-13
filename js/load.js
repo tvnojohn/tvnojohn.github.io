@@ -29,5 +29,5 @@ function createHttpRequest(){
 function loadStage(fileName){
 	var data = loadFile(fileName) + "";
 	var stageData = data.split(",");
-	console.log(stageData[0] + stageData[3]);
+	console.log(stageData);
 }	
