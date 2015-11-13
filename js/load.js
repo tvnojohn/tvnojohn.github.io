@@ -4,7 +4,7 @@ function loadFile(fileName){
 	xmlHttpReq.open('GET', fileName, true);
 	xmlHttpReq.onreadystatechange = function(){
 		if(xmlHttpReq.readyState == 4){
-			loadData = xmlHttpReq.responseText+"";
+			loadData = xmlHttpReq.responseText;
 			loadStage(loadData);
 			/*paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
 			var out = "<html>";
@@ -26,6 +26,6 @@ function createHttpRequest(){
 }
 
 function loadStage(loadDatas){
-	var stageData = loadDatas.splite(",");
+	var stageData = loadDatas + "";
 	console.log(stageData);
 }	
