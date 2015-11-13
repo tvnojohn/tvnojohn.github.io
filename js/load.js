@@ -25,4 +25,7 @@ function createHttpRequest(){
 
 function loadStage(){
 	console.log(document.getElementById("out").innerHTML);
+	var loadData = document.getElementById("out").innerHTML + "";
+	var stageData = loadData.split(",");
+	console.log(stageData);
 }	
