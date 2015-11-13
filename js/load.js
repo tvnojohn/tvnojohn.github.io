@@ -1,10 +1,11 @@
-var loadStageData
+
 function loadFile(fileName){
+	var loadData
 	var xmlHttpReq = createHttpRequest();
 	xmlHttpReq.open('GET', fileName, true);
 	xmlHttpReq.onreadystatechange = function(){
 		if(xmlHttpReq.readyState == 4){
-			loadStageData = xmlHttpReq.responseText.split(",");
+			loadData = xmlHttpReq.responseText.split(",");
 			paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
 			var out = "<html>";
 			out += paths
@@ -13,6 +14,7 @@ function loadFile(fileName){
 		}
 	}
 	xmlHttpReq.send(null);
+	return loadData;
 }
 
 function createHttpRequest(){
@@ -25,6 +27,6 @@ function createHttpRequest(){
 }
 
 function loadStage(fileName){
-	loadFile(fileName);
-	document.write(loadStageData[0] + loadStageData[3]);
+	var stageData = loadFile(fileName);
+	document.write(stageData[0] + stageData[3])
 }	
