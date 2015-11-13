@@ -1,5 +1,9 @@
 
 <html>
+<head>
+	<meta charset="utf-8">
+	<title>Block Break</title>
+	<script type="text/javascript" src="load.js"></script>
 <body>
 <canvas id="canvas1" width="400" height="300"></canvas>
 <script type="text/javascript">
@@ -11,6 +15,28 @@
 	
 	var mouseX = 0;
 	var mouseY = 0;
+	
+	var x = 0;
+	var y = 100;
+	var dx = 0;
+	var dy = 0;
+	var sx = 1;
+	var sy = 2;
+	
+	var dpush = false;
+	var clearcheck = 0;
+	var clearcheckbool = false;
+	var misscheck = false;
+	
+	var count = 0;
+	var ball_count = 0;
+		
+	var r_w = 50.0;	// racket width
+	var b_w = 40.0;	// block width
+	var b_h = 40.0;	// block height
+	var a_w = 15.0;	// ball width
+	var a_h = 15.0;	// ball height
+	
 	function movehandler(event)
 	{
 		mouseX = event.offsetX;
@@ -18,8 +44,6 @@
 	}
 	window.onmousemove = movehandler;
 	
-	var mouseclickX = 0;
-	var mouseclickY = 0;
 	function block(_x, _y, _hit) {
 		this.x = _x || -1;
 		this.y = _y || -1;
@@ -62,11 +86,6 @@
 		window.onclick = mouseclicked;
 	}
 	
-	var dpush = false;
-	var clearcheck = 0;
-	var clearcheckbool = false;
-	var misscheck = false;
-	
 	function typecheck(){
 		if(event.keyCode == 68){
 			dpush =true;
@@ -101,25 +120,6 @@
 		}
 	}
 	
-	
-	var x = 0;
-	var y = 100;
-	var dx = 0;
-	var dy = 0;
-	var sx = 1;
-	var sy = 2;
-	
-	var count = 0;
-	var ball_count = 0;
-		
-	// var hit = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2];			// <---
-
-	var r_w = 50.0;	// racket width
-	var b_w = 40.0;	// block width
-	var b_h = 40.0;	// block height
-	var a_w = 15.0;	// ball width
-	var a_h = 15.0;	// ball height
-
 	function checkHit(x, y)
 	{
 		if(y + a_h < 250 || y + a_h > 251){	
@@ -306,7 +306,10 @@
 		}
 	}
 	setInterval(draw, 10);
-
+	
 </script>
+<div>
+<input type="button" value="load" onClick="javascript:loadFile('./stage1.txt')"> 
+</div>
 </body>
 </html>
