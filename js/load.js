@@ -23,5 +23,5 @@ function createHttpRequest(){
 
 function loadStage(fileName){
 	loadFile(fileName);
-	//console.log(getElementById("out").innerHTML);
+	console.log(document.getElementById("out").innerHTML);
 }	
