@@ -27,7 +27,7 @@ function loadStage(){
 	console.log(document.getElementById("out").innerHTML);
 	var loadData = document.getElementById("out").innerHTML + "";
 	var stageData = loadData.split(",");
-	if(!stageData){
+	if(stageData==""){
 		loadStage();
 	}
 	console.log(stageData);
