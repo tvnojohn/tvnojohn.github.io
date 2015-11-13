@@ -6,11 +6,11 @@ function loadFile(fileName){
 	xmlHttpReq.onreadystatechange = function(){
 		if(xmlHttpReq.readyState == 4){
 			loadData = xmlHttpReq.responseText;
-			paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
+			/*paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
 			var out = "<html>";
 			out += paths
 			out += "</html>";
-			document.getElementById("out").innerHTML = out;
+			document.getElementById("out").innerHTML = out;*/
 		}
 	}
 	xmlHttpReq.send(null);
