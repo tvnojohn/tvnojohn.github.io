@@ -5,6 +5,7 @@ function loadFile(fileName){
 	xmlHttpReq.onreadystatechange = function(){
 		if(xmlHttpReq.readyState == 4){
 			loadData = xmlHttpReq.result;
+			console.log(loadData);
 			loadStage(loadData);
 			/*paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
 			var out = "<html>";
