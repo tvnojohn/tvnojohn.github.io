@@ -26,6 +26,21 @@ function createHttpRequest(){
 function loadStage(){
 	console.log(document.getElementById("out").innerHTML);
 	var loadData = document.getElementById("out").innerHTML + "";
-	var stageData = loadData.split(",");
+	var stageData = loadData.split("<br>");
 	console.log(stageData);
+	for(var i = 0; i<20; i++){
+		if(stageData[i]){
+			var blockData = stageData[i].split(",");
+			block_data.data[i].x = blockData[0];
+			block_data.data[i].y = blockData[1];
+			block_data.data[i].hit = blockData[2];
+			block_data.data[i].life = blockData[3];
+		}
+		else{
+			block_data.data[i].x = 0;
+			block_data.data[i].y = 0;
+			block_data.data[i].hit = 0;
+			block_data.data[i].life = 0;	
+		}
+	}
 }	
