@@ -8,10 +8,10 @@ function loadFile(fileName){
 			out += paths
 			out += "</html>";
 			document.getElementById("out").innerHTML = out;
+			loadStage();
 		}
 	}
 	xmlHttpReq.send(null);
-	loadStage();
 }
 
 function createHttpRequest(){
@@ -27,8 +27,5 @@ function loadStage(){
 	console.log(document.getElementById("out").innerHTML);
 	var loadData = document.getElementById("out").innerHTML + "";
 	var stageData = loadData.split(",");
-	if(stageData==""){
-		loadStage();
-	}
 	console.log(stageData);
 }	
