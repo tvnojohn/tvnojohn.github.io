@@ -3,7 +3,13 @@ function loadFile(fileName){
 	xmlHttpReq.open('GET', fileName, true);
 	xmlHttpReq.onreadystatechange = function(){
 		if(xmlHttpReq.readyState == 4){
-			alert(xmlHttpReq.responseText);	
+			paths = xmlHttpReq.responseText.split("\r\n");
+			var out = "<html>";
+			for(n=0;n<paths.length;n++){
+				out += "<a href=' ' >" + paths[n] + "'>" + paths[n] + "</a><br>\n";
+			}
+			out += "</html>";
+			document.getElementById("out").innerHTML = out;
 		}
 	}
 	xmlHttpReq.send(null);
