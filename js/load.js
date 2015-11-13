@@ -26,6 +26,6 @@ function createHttpRequest(){
 }
 
 function loadStage(loadDatas){
-	var stageData = loadDatas.splite(,);
+	var stageData = loadDatas.splite(",");
 	console.log(stageData);
 }	
