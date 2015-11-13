@@ -10,7 +10,7 @@ function loadFile(fileName){
 			document.getElementById("out").innerHTML = out;
 		}
 	}
-	loadStage();
+	//loadStage();
 }
 
 function createHttpRequest(){
