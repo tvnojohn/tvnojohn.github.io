@@ -6,7 +6,7 @@ function loadFile(fileName){
 			paths = xmlHttpReq.responseText.split("\r\n");
 			var out = "<html>";
 			for(n=0;n<paths.length;n++){
-				out += "<p>" + paths[n] + "</p><br>\n";
+				out += "<p>" + paths[n] + "</p>"+paths[n]+<br>\n";
 			}
 			out += "</html>";
 			document.getElementById("out").innerHTML = out;
