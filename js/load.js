@@ -1,19 +1,15 @@
 function loadFile(fileName){
-	var loadData = null;
 	var xmlHttpReq = createHttpRequest();
 	xmlHttpReq.open('GET', fileName, true);
 	xmlHttpReq.onreadystatechange = function(){
 		if(xmlHttpReq.readyState == 4){
-			/*paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
+			paths = xmlHttpReq.responseText.replace(/[\n\r]/g,"<br />");
 			var out = "<html>";
 			out += paths
 			out += "</html>";
-			document.getElementById("out").innerHTML = out;*/
+			document.getElementById("out").innerHTML = out;
 		}
-		loadData = xmlHttpReq.responseText;
 	}
-	xmlHttpReq.send(null);
-	loadStage(loadData);
 }
 
 function createHttpRequest(){
@@ -25,7 +21,7 @@ function createHttpRequest(){
 		return c;
 }
 
-function loadStage(loadDatas){
-	var stageData = loadDatas + "";
-	console.log(stageData);
+function loadStage(fileName){
+	loadFile(fileName);
+	console.log(getElementById("out").innerHTML);
 }	
