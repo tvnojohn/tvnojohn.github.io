@@ -1,5 +1,2 @@
-test1 uaj 
-aa
-a
-test2
-test3
+10,10,2,2
+10,20,2,2
