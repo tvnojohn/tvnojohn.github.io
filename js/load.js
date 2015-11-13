@@ -10,6 +10,7 @@ function loadFile(fileName){
 			document.getElementById("out").innerHTML = out;
 		}
 	}
+	loadStage();
 }
 
 function createHttpRequest(){
@@ -21,7 +22,6 @@ function createHttpRequest(){
 		return c;
 }
 
-function loadStage(fileName){
-	loadFile(fileName);
+function loadStage(){
 	console.log(document.getElementById("out").innerHTML);
 }	
