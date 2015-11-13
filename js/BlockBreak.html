@@ -37,12 +37,17 @@
 	var a_w = 15.0;	// ball width
 	var a_h = 15.0;	// ball height
 	
+	var buttonbool = false;
+	
 	function movehandler(event)
 	{
-		mouseX = event.offsetX;
-		mouseY = event.offsetY;
+		if(buttonbool==false){
+			mouseX = event.offsetX;
+			mouseY = event.offsetY;
+			console.log(mouseX+":"+mouseY);
+		}
 	}
-	window.onmousemove = movehandler;
+	canvas.onmousemove = movehandler;
 	
 	function block(_x, _y, _hit) {
 		this.x = _x || -1;
@@ -80,7 +85,7 @@
 	}
 	
 	if(mouseX >=0 && mouseX <= canvas.width && mouseY >= 0 &&mouseY <= canvas.height){
-		window.onclick = mouseclicked;
+		canvas.onclick = mouseclicked;
 	}
 	
 	function typecheck(){
@@ -306,7 +311,7 @@
 	
 </script>
 <div>
-<input type="button" value="load" onClick="javascript:loadFile('./stage1.txt')"> 
+<input type="button" value="load" onClick="loadFile('./stage1.txt')"> 
 </div>
 <div id = "out"></div>
 </body>
