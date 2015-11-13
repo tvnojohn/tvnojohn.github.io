@@ -36,58 +36,46 @@
 	var b_h = 40.0;	// block height
 	var a_w = 15.0;	// ball width
 	var a_h = 15.0;	// ball height
-	
-	var buttonbool = false;
-	
-	function movehandler(event)
+
+	canvas.onmousemove = moveHandler;
+	function moveHandler(event)
 	{
-		if(buttonbool==false){
-			mouseX = event.offsetX;
-			mouseY = event.offsetY;
-			console.log(mouseX+":"+mouseY);
-		}
+		var rect = event.target.getBoundingClientRect();
+		mouseX = event.clientX - rect.left;
+		mouseY = event.clientY - rect.top;
+		console.log(mouseX+":"+mouseY);
 	}
-	canvas.onmousemove = movehandler;
-	
-	function block(_x, _y, _hit) {
-		this.x = _x || -1;
-		this.y = _y || -1;
-		this.hit = _hit || 0;
-		this.life = _hit || 0;
-	}
-	
-	function blocks(){
-		this.data = new Array(20);
-		for(var i=0; i<20; i++){
-			this.data[i] = new block();
-		}
-		this.datacheck=0;
-	}
-	
-	var block_data = new blocks();
-	
-	function mouseclicked(event)
+		
+	canvas.onmouseout = mouseOutCanvas;
+	function mouseOutCanvas(event)
 	{
-		for(var i = 0; i<20; i++){
-			if(dx*dy == 0 && block_data.data[i].life == 0){
-				if(block_data.data[i].x-mouseX==0 && mouseY - block_data.data[i].y==0){
+		mouseX = -1;
+		mouseY = -1;
+		console.log(mouseX+":"+mouseY);
+	}
+		
+	canvas.onclick = mouseClicked;
+	function mouseClicked(event)
+	{
+		if(mouseX>0){
+			for(var i = 0; i<20; i++){
+				if(dx*dy == 0 && block_data.data[i].life == 0){
+					if(block_data.data[i].x-mouseX==0 && mouseY - 	block_data.data[i].y==0){
 						break;
-				}else{
-					block_data.data[i].x = mouseX;
-					block_data.data[i].y = mouseY;
-					block_data.data[i].hit = 2;
-					block_data.data[i].life = 2;
-					block_data.datacheck++;
-					break;				
+					}else{
+						block_data.data[i].x = mouseX;
+						block_data.data[i].y = mouseY;
+						block_data.data[i].hit = 2;
+						block_data.data[i].life = 2;
+						block_data.datacheck++;
+						break;				
+					}
 				}
 			}
 		}
 	}
 	
-	if(mouseX >=0 && mouseX <= canvas.width && mouseY >= 0 &&mouseY <= canvas.height){
-		canvas.onclick = mouseclicked;
-	}
-	
+	document.onkeydown = typecheck;	
 	function typecheck(){
 		if(event.keyCode == 68){
 			dpush =true;
@@ -104,8 +92,23 @@
 			misscheck = false;
 		}
 	}
+
+	function block(_x, _y, _hit) {
+		this.x = _x || -1;
+		this.y = _y || -1;
+		this.hit = _hit || 0;
+		this.life = _hit || 0;
+	}
 	
-	document.onkeydown = typecheck;
+	function blocks(){
+		this.data = new Array(20);
+		for(var i=0; i<20; i++){
+			this.data[i] = new block();
+		}
+		this.datacheck=0;
+	}
+	
+	var block_data = new blocks();
 
 	function blockdelete(){
 		var i=0;
