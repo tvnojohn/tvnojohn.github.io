@@ -260,7 +260,6 @@
 
 		for(var i=0; i<20; i++) {
 			if(block_data.data[i].hit > 0) {
-				show_block(i);
 				ref = checkHitBlock(i, x, y);
 				switch (ref) {
 					case 1:
@@ -276,7 +275,7 @@
 						dy = -sy;
 						break;
 				}
-				switch (ref) {
+				/*switch (ref) {
 					case 2:
 					case 3:
 					case 4:
@@ -289,7 +288,8 @@
 						dx = -sx;
 						block_data.data[i].hit--;
 						break;
-				}
+				}*/
+				show_block(i);
 			}
 			clearcheck = clearcheck - block_data.data[i].hit;
 		}
