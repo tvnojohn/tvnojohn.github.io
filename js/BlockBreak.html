@@ -45,7 +45,6 @@
 		var rect = event.target.getBoundingClientRect();
 		mouseX = event.clientX - rect.left;
 		mouseY = event.clientY - rect.top;
-		console.log(mouseX+":"+mouseY);
 	}
 		
 	canvas.onmouseout = mouseOutCanvas;
@@ -53,7 +52,6 @@
 	{
 		mouseX = -1;
 		mouseY = -1;
-		console.log(mouseX+":"+mouseY);
 	}
 		
 	canvas.onclick = mouseClicked;

@@ -1,6 +1,4 @@
 function loadFile(fileName){
-	buttonbool = true;
-	console.log(mouseX);
 	var xmlHttpReq = createHttpRequest();
 	xmlHttpReq.open('GET', fileName, true);
 	xmlHttpReq.onreadystatechange = function(){
@@ -38,6 +36,7 @@ function loadStage(){
 			block_data.data[i].life = blockData[3];
 			block_data.datacheck++;
 			console.log(block_data.data[i]);
+			console.log(x + "," + dx);
 		}
 		else{
 			block_data.data[i].x = 0;
