@@ -37,6 +37,8 @@
 	var a_w = 15.0;	// ball width
 	var a_h = 15.0;	// ball height
 
+	var intervalID;
+	
 	canvas.onmousemove = moveHandler;
 	function moveHandler(event)
 	{
@@ -68,6 +70,7 @@
 						block_data.data[i].hit = 2;
 						block_data.data[i].life = 2;
 						block_data.datacheck++;
+						draw();
 						break;				
 					}
 				}
@@ -77,19 +80,23 @@
 	
 	document.onkeydown = typecheck;	
 	function typecheck(){
-		if(event.keyCode == 68){
-			dpush =true;
-		}else if((ball_count == 0 || clearcheckbool == true) && block_data.datacheck>0){
-			x = 0;
-			y = 100;
-			dx = 1;
-			dy = 2;
-			ball_count = 3;
-			for (var i = 0; i<20; i++){
-				block_data.data[i].hit = block_data.data[i].life;
+		if(mouseX>0){
+			if(event.keyCode == 68){
+				dpush =true;
+				draw();
+			}else if((ball_count == 0 || clearcheckbool == true) && 	block_data.datacheck>0){
+				x = 0;
+				y = 100;
+				dx = 1;
+				dy = 2;
+				ball_count = 3;
+				for (var i = 0; i<20; i++){
+					block_data.data[i].hit = block_data.data[i].life;
+				}
+				clearcheckbool = false;
+				misscheck = false;
+				changeInterval();
 			}
-			clearcheckbool = false;
-			misscheck = false;
 		}
 	}
 
@@ -297,8 +304,12 @@
 
 		checkHit(x, y);
 		if(clearcheckbool==true){
+			context.fillStyle = "rgb(250, 130, 50)";
+			context.fillRect(0, 0, canvas.width, canvas.height);
+			context.fillStyle = "rgb(0, 0, 0)";
 			context.font="50px 'Hiragino Kaku Gothic Pro'";
-			context.fillText("Game Clear", 10, 150);		
+			context.fillText("Game Clear", 10, 150);	
+			stopInterval();
 		}
 		if(misscheck==true){
 			for(var i = 0; i<20; i++){
@@ -308,10 +319,20 @@
 			}
 			context.font="50px 'Hiragino Kaku Gothic Pro'";
 			context.fillText("Game Over", 10, 150);	
+			stopInterval();
 		}
 	}
-	setInterval(draw, 10);
 	
+	function changeInterval()
+	{
+		intervalID = setInterval(draw, 10);
+	}
+	
+	function stopInterval()
+	{
+		clearInterval(intervalID);
+	}
+	draw();
 </script>
 <div>
 <input type="button" value="load" onClick="loadFile('./stage1.txt')"> 
