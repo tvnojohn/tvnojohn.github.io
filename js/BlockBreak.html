@@ -261,7 +261,7 @@
 		for(var i=0; i<20; i++) {
 			if(block_data.data[i].hit > 0) {
 				ref = checkHitBlock(i, x, y);
-				console.log(x +":"+left+","+y+":"+top);
+				console.log(x +":"+block_data.data[i].x+","+y+":"+block_data.data[i].y);
 				switch (ref) {
 					case 1:
 						block_data.data[i].hit--;
