@@ -211,6 +211,7 @@
 				return 4;
 			}
 		}
+		console.log(x +":"+left+","y+":"top);
 	}
 
 	function draw()
@@ -275,7 +276,7 @@
 						dy = -sy;
 						break;
 				}
-				/*switch (ref) {
+				switch (ref) {
 					case 2:
 					case 3:
 					case 4:
@@ -288,7 +289,7 @@
 						dx = -sx;
 						block_data.data[i].hit--;
 						break;
-				}*/
+				}
 				show_block(i);
 			}
 			clearcheck = clearcheck - block_data.data[i].hit;
@@ -319,7 +320,6 @@
 			context.fillText("Game Over", 10, 150);	
 			stopInterval();
 		}
-		console.log(y + "," + dy + "," +x +","+ dx);
 	}
 	
 	function changeInterval()

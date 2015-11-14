@@ -24,7 +24,6 @@ function createHttpRequest(){
 }
 
 function loadStage(){
-	console.log(document.getElementById("out").innerHTML);
 	var loadData = document.getElementById("out").innerHTML + "";
 	var stageData = loadData.split("<br>");
 	for(var i = 0; i<20; i++){
@@ -35,8 +34,6 @@ function loadStage(){
 			block_data.data[i].hit = blockData[2];
 			block_data.data[i].life = blockData[3];
 			block_data.datacheck++;
-			console.log(block_data.data[i]);
-			console.log(x + "," + dx);
 		}
 		else{
 			block_data.data[i].x = 0;
@@ -44,7 +41,6 @@ function loadStage(){
 			block_data.data[i].hit = 0;
 			block_data.data[i].life = 0;	
 		}
-		//console.log(stageData[i]);
 		draw();
 	}
 }	
