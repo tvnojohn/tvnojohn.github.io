@@ -45,5 +45,6 @@ function loadStage(){
 			block_data.data[i].life = 0;	
 		}
 		//console.log(stageData[i]);
+		draw();
 	}
 }	

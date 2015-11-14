@@ -124,7 +124,6 @@
 						block_data.data[i].life = 0;
 						block_data.data[i].hit = 0;
 						block_data.datacheck--;
-						console.log(y + "," + dy + "," +x +","+ dx);
 					}
 				}	
 			}
@@ -320,6 +319,7 @@
 			context.fillText("Game Over", 10, 150);	
 			stopInterval();
 		}
+		console.log(y + "," + dy + "," +x +","+ dx);
 	}
 	
 	function changeInterval()
