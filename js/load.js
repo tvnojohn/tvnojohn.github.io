@@ -29,10 +29,10 @@ function loadStage(){
 	for(var i = 0; i<20; i++){
 		if(stageData[i]){
 			var blockData = stageData[i].split(",");
-			block_data.data[i].x = blockData[0];
-			block_data.data[i].y = blockData[1];
-			block_data.data[i].hit = blockData[2];
-			block_data.data[i].life = blockData[3];
+			block_data.data[i].x = parseInt(blockData[0]);
+			block_data.data[i].y = parseInt(blockData[1]);
+			block_data.data[i].hit = parseInt(blockData[2]);
+			block_data.data[i].life = parseInt(blockData[3]);
 			block_data.datacheck++;
 		}
 		else{
