@@ -36,8 +36,6 @@
 	var b_h = 40.0;	// block height
 	var a_w = 15.0;	// ball width
 	var a_h = 15.0;	// ball height
-
-	var intervalID;
 	
 	canvas.onmousemove = moveHandler;
 	function moveHandler(event)
@@ -68,7 +66,6 @@
 						block_data.data[i].hit = 2;
 						block_data.data[i].life = 2;
 						block_data.datacheck++;
-						draw();
 						break;				
 					}
 				}
@@ -81,7 +78,6 @@
 		if(mouseX>0){
 			if(event.keyCode == 68){
 				dpush =true;
-				draw();
 			}else if((ball_count == 0 || clearcheckbool == true) && 	block_data.datacheck>0){
 				x = 0;
 				y = 100;
@@ -311,7 +307,6 @@
 			context.fillStyle = "rgb(0, 0, 0)";
 			context.font="50px 'Hiragino Kaku Gothic Pro'";
 			context.fillText("Game Clear", 10, 150);	
-			stopInterval();
 		}
 		if(misscheck==true){
 			for(var i = 0; i<20; i++){
@@ -321,20 +316,9 @@
 			}
 			context.font="50px 'Hiragino Kaku Gothic Pro'";
 			context.fillText("Game Over", 10, 150);	
-			stopInterval();
 		}
 	}
-	
-	function changeInterval()
-	{
-		intervalID = setInterval(draw, 10);
-	}
-	
-	function stopInterval()
-	{
-		clearInterval(intervalID);
-	}
-	draw();
+	setInterval(draw, 10);
 </script>
 <div>
 <input type="button" value="load" onClick="loadFile('./stage1.txt')"> 

@@ -41,6 +41,5 @@ function loadStage(){
 			block_data.data[i].hit = 0;
 			block_data.data[i].life = 0;	
 		}
-		draw();
 	}
 }	
