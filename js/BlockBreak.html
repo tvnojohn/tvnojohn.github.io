@@ -176,7 +176,7 @@
 		var cx = left + b_w / 2;
 		var cy = top + b_h / 2;
 		var y1, y2;
-
+		/*
 		if((x + a_w <= left) || (x >= right) || (y + a_h <= top) || (y >= bottom)) {
 			return 0;
 		}
@@ -196,20 +196,45 @@
 			}
 		} else if (y1 < 0) {
 			if(y2 > 0) {
-				//return 7;
+				return 7;
 			} else if(y2 == 0) {
-				//return 6;
+				return 6;
 			} else {
 				return 5;
 			}
 		} else {
 			if(y2 > 0) {
-				//return 8;
+				return 8;
 			} else if(y2 == 0) {
 				return -1;
 			} else {
 				return 4;
 			}
+		}*/
+		var dx, dy;
+
+		if((x + a_w < left) || (x >= right) || (y + a_h < top) || (y >= bottom)) {
+			return 0;
+		}
+
+		if(x + a_w - left > right - x) {
+			dx = right - x;
+		} else {
+			dx = x + a_w - left;
+		}
+
+		if(y + a_h - top > bottom - y) {
+			dy = bottom - y;
+		} else {
+			dy = y + a_h - top;
+		}
+
+		if(dx > dy) {
+			return 1;
+		} else if(dx < dy) {
+			return 2;
+		} else {
+			return 3;
 		}
 	}
 
@@ -261,7 +286,7 @@
 		for(var i=0; i<20; i++) {
 			if(block_data.data[i].hit > 0) {
 				ref = checkHitBlock(i, x, y);
-				switch (ref) {
+				/*switch (ref) {
 					case 1:
 						block_data.data[i].hit--;
 					case 2:
@@ -291,6 +316,21 @@
 						dx = -sx;
 						block_data.data[i].hit--;
 						console.log(x +":"+block_data.data[i].x+","+y+":"+block_data.data[i].y);
+						break;
+				}*/
+				switch (ref) {
+					case 1:
+						dy = -dy;
+						block_data.data[i].hit--;	// <---
+						break;
+					case 2:
+						dx = -dx;
+						block_data.data[i].hit
+						break;
+					case 3:
+						dy = -dy;
+						dx = -dx;
+						block_data.data[i].hit
 						break;
 				}
 				show_block(i);
