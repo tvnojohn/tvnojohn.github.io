@@ -1,3 +1,4 @@
+//textFileの読み込み
 function loadFile(fileName){
 	var xmlHttpReq = createHttpRequest();
 	xmlHttpReq.open('GET', fileName, true);

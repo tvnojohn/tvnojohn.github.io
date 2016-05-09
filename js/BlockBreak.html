@@ -1,9 +1,9 @@
-
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Block Break</title>
-	<script type="text/javascript" src="load.js"></script>
+	<script type="text/javascript" src="connection.js"></script>
+</head>
 <body>
 <canvas id="canvas1" width="400" height="300"></canvas>
 <script type="text/javascript">
@@ -37,6 +37,7 @@
 	var a_w = 15.0;	// ball width
 	var a_h = 15.0;	// ball height
 	
+	//キャンバス上でマウスが動いたらマウスの座標を取得する．
 	canvas.onmousemove = moveHandler;
 	function moveHandler(event)
 	{
@@ -44,7 +45,8 @@
 		mouseX = event.clientX - rect.left;
 		mouseY = event.clientY - rect.top;
 	}
-		
+	
+	//マウスがキャンバス外に出たらマウスの座標を(-1,-1)に変更する．	
 	canvas.onmouseout = mouseOutCanvas;
 	function mouseOutCanvas(event)
 	{
@@ -52,6 +54,7 @@
 		mouseY = -1;
 	}
 		
+	//キャンバス上でクリックをした時にブロックを作成する．
 	canvas.onclick = mouseClicked;
 	function mouseClicked(event)
 	{
@@ -71,28 +74,35 @@
 				}
 			}
 		}
+		if(clearcheckbool && dx*dy==0){
+			blockReset();	
+		}
+		clearcheckbool = false;
 	}
 	
-	document.onkeydown = typecheck;	
-	function typecheck(){
+	// キーボードが押されたら
+	document.onkeydown = typeCheck;	
+	function typeCheck(){
 		if(mouseX>0){
+			//ブロック上でdが押されたらブロックを削除する
 			if(event.keyCode == 68){
 				dpush =true;
-			}else if((ball_count == 0 || clearcheckbool == true) && 	block_data.datacheck>0){
+			}
+			//それ以外のキーが押されたらゲームをスタートする
+			else if((ball_count == 0 || clearcheckbool == true) && 	block_data.datacheck>0){
 				x = 0;
 				y = 100;
 				dx = 1;
 				dy = 2;
 				ball_count = 3;
-				for (var i = 0; i<20; i++){
-					block_data.data[i].hit = block_data.data[i].life;
-				}
+				blockReset();
 				clearcheckbool = false;
 				misscheck = false;
 			}
 		}
 	}
-
+	
+	//ブロックの情報を保存する構造体
 	function block(_x, _y, _hit) {
 		this.x = _x || -1;
 		this.y = _y || -1;
@@ -100,6 +110,7 @@
 		this.life = _hit || 0;
 	}
 	
+	//ステージの情報を保存する構造体
 	function blocks(){
 		this.data = new Array(20);
 		for(var i=0; i<20; i++){
@@ -108,9 +119,19 @@
 		this.datacheck=0;
 	}
 	
+	//ブロックのライフなどをリセットする
+	function blockReset(){
+		for (var i = 0; i<20; i++){
+			block_data.data[i].hit = block_data.data[i].life;
+		}
+		x = 0;
+		y = 100;
+	}
+	
 	var block_data = new blocks();
 
-	function blockdelete(){
+	//ブロックを削除する
+	function blockDelete(){
 		var i=0;
 		for(i = 0; i<20; i++){
 			if(mouseX >= block_data.data[i].x && mouseX <=block_data.data[i].x + b_w){
@@ -125,6 +146,7 @@
 		}
 	}
 	
+	//バーとの当たり判定
 	function checkHit(x, y)
 	{
 		if(y + a_h < 250 || y + a_h > 251){	
@@ -143,6 +165,7 @@
 		}
 	}
 
+	//ブロックの表示
 	function show_block(n)
 	{
 		if(misscheck==true){
@@ -155,6 +178,9 @@
 			case 2:
 				context.fillStyle = "#F7FF1A";
 				break;
+			case 3:
+				context.fillStyle = "#33FF23";
+				break;
 		}
 		
 		context.fillRect(block_data.data[n].x, block_data.data[n].y, b_w, b_h);
@@ -162,6 +188,7 @@
 		context.fillText(block_data.data[n].hit, block_data.data[n].x, block_data.data[n].y - 5);
 	}
 
+	//ブロックとの当たり判定
 	function checkHitBlock(n, x, y)
 	{
 		var left = block_data.data[n].x;
@@ -180,7 +207,6 @@
 		y = y + a_h / 2;
 		y1 = y - (-(x - cx) * b_h / b_w + cy);
 		y2 = y - ( (x - cx) * b_h / b_w + cy);
-		console.log(y2 + ":" +y1);
 		if(y1 > 0) {
 			if(y2 > 0) {
 				return 1;
@@ -208,6 +234,7 @@
 		}
 	}
 
+	//描画
 	function draw()
 	{
 		var ref = 0;
@@ -242,7 +269,7 @@
 		}
 
 		if(dpush == true && dx*dy==0){
-			blockdelete();
+			blockDelete();
 			dpush=false;	
 		}
 
@@ -262,14 +289,12 @@
 					case 2:
 					case 8:
 						dy = sy;
-						console.log(x +":"+block_data.data[i].x+","+y+":"+block_data.data[i].y);
 						break;
 					case 5:
 						block_data.data[i].hit--;
 					case 4:
 					case 6:
 						dy = -sy;
-						console.log(x +":"+block_data.data[i].x+","+y+":"+block_data.data[i].y);
 						break;
 				}
 				switch (ref) {
@@ -278,21 +303,19 @@
 					case 4:
 						dx = sx;
 						block_data.data[i].hit--;
-						console.log(x +":"+block_data.data[i].x+","+y+":"+block_data.data[i].y);
 						break;
 					case 6:
 					case 7:
 					case 8:
 						dx = -sx;
 						block_data.data[i].hit--;
-						console.log(x +":"+block_data.data[i].x+","+y+":"+block_data.data[i].y);
 						break;
 				}
 				show_block(i);
 			}
 			clearcheck = clearcheck - block_data.data[i].hit;
 		}
-		if(clearcheck == 0 && block_data.datacheck>0){
+		if(clearcheck == 0 && block_data.datacheck>=0){
 			dx=0;
 			dy=0;
 			clearcheckbool=true;
@@ -322,6 +345,7 @@
 <div>
 <input type="button" value="load" onClick="loadFile('./stage1.txt')"> 
 </div>
+<div><li><a href="./BlockBreakInfo.html">仕様説明</a></li></div>
 <div id = "out" style="visibility:hidden;"></div>
 </body>
 </html>
